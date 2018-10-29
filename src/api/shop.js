@@ -3,13 +3,13 @@
  */
 const products = [
   {
-    id: 1, title: 'iPad 4 Mini', price: 500.01, inventory: 2, img_url: 'shoe-1.jpg',
+    id: 1, title: 'Red Chestnut Shoes', info: 'Our most elegant brand of shoe. Perfect for the day that you get married!', price: 199.99, inventory: 3, img_url: 'shoe-1.jpg',
   },
   {
-    id: 2, title: 'H&M T-Shirt White', price: 10.99, inventory: 10, img_url: 'shoe-2.jpg',
+    id: 2, title: 'Brown Rodeo Shoes', info: 'Big interview coming up? Look your very best on the day your wife has a baby!', price: 99.99, inventory: 13, img_url: 'shoe-2.jpg',
   },
   {
-    id: 3, title: 'Charli XCX - Sucker CD', price: 19.99, inventory: 5, img_url: 'shoe-3.jpg',
+    id: 3, title: 'Elegator Shoes', info: 'Our most unique brand of shoe. These elegant alligator shoes are perfect lounging around the house!', price: 119.99, inventory: 7, img_url: 'shoe-3.jpg',
   },
 ];
 

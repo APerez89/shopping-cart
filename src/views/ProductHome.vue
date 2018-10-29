@@ -1,7 +1,11 @@
 <template>
   <div>
-    <h2>{{ header }}</h2>
-    <div class="button" @click="$store.state.scopen = !$store.state.scopen"><i class="fas fa-shopping-cart"></i></div>
+    <div class="top-bar">
+      <router-link class="go-home" to="/">{{ header }}</router-link>
+      <div class="button" @click="$store.state.scopen = !$store.state.scopen">
+        <i class="fas fa-shopping-cart"></i>
+      </div>
+    </div>
     <ProductList/>
     <ShoppingCart :class="$store.state.scopen ? 'open' : ''"/>
   </div>
@@ -19,7 +23,7 @@ export default {
   },
   data() {
     return {
-      header: 'header here',
+      header: 'Shoe LaLa',
     };
   },
 };
@@ -27,29 +31,39 @@ export default {
 
 <style lang="scss" scoped>
 div {
-  h2 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 3rem;
-    color: #343a3d;
-  }
-  .button {
-    background-color: #343a3d;
-    border-radius: 30px;
-    position: fixed;
-    font-size: 25px;
-    top: 0;
-    right: 0;
-    margin: 25px;
-    padding: 13px;
-    color: #fff;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s;
-    z-index: 999;
-    &:hover {
-      transform: translateY(-3px);
-      color: #19cc9f;
-      background-color: #474e50;
-      cursor: pointer;
+  .top-bar {
+    width: 100%;
+    height: 90px;
+    background-color: #191c1f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .go-home {
+      font-family: 'Righteous', cursive;
+      text-decoration: none;
+      font-size: 40px;
+      color: #fff;
+      margin: 0 40px;
+      transition: all 0.3s;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+    .button {
+      background-color: #19cc9f;
+      border-radius: 30px;
+      font-size: 25px;
+      margin: 0 40px;
+      padding: 13px;
+      color: #fff;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s;
+      z-index: 999;
+      &:hover {
+        transform: scale(1.1);
+        background-color: #69e7c4;
+        cursor: pointer;
+      }
     }
   }
 }

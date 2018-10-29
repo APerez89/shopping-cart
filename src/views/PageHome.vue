@@ -26,6 +26,10 @@ export default {
   justify-content: center;
   align-items: center;
   .dark-bkg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 25px;
     background-color: rgba(0,0,0,0.8);
     h1 {
@@ -51,11 +55,15 @@ export default {
       }
     }
     .wel-btn {
+      width: 350px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       font-size: 1.3rem;
       font-weight: 700;
-      border: 3px solid #fff;
-      padding: 20px 80px;
       text-decoration: none;
+      border: 3px solid #fff;
+      padding: 20px 0;
       color: #fff;
       transition: all 0.2s ease;
       &:hover {

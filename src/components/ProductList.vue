@@ -7,12 +7,22 @@
     <div class="list-container">
       <ul> <!-- would need a v-else in the ul -->
         <li v-for="product in products" :key="product['.key']">
-          <img :src="`img/${product.img_url}`">
-          {{ product.title }} - {{ product.price | currency }} - {{ product.inventory }}
-          <button
-            class="btn"
-            :disabled="!productIsInStock(product)"
-            @click="addProductToCart(product)">Add to cart</button>
+          <div class="list-img" :style="`background-image: url(img/${product.img_url})`">
+            <!-- <img :src="`img/${product.img_url}`"> -->
+          </div>
+          <div class="list-info">
+            <span class="product-title">{{ product.title }}</span> <br>
+            <span class="product-info">{{ product.info }}</span> <br>
+            <span class="product-price">{{ product.price | currency }}
+              <span class="product-quantity">{{ product.inventory }} remaining</span>
+            </span>
+            <br>
+            <button
+              class="btn"
+              :disabled="!productIsInStock(product)"
+              @click="addProductToCart(product)">Add to cart
+            </button>
+          </div>
         </li>
       </ul>
     </div>
@@ -59,43 +69,72 @@ div {
   align-items: center;
   .list-container {
     width: 80%;
+    margin-top: 30px;
     ul {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       padding: 0;
       text-align: left;
       li {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 2fr 1fr;
-        font-family: -apple-system, BlinkMacSystemFont,
-          'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-          'Open Sans', 'Helvetica Neue', sans-serif;
-        font-size: 1.3rem;
+        width: 450px;
+        box-shadow: 0 0 13px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
         list-style: none;
-        color: #19cc9f;
-        margin: 14px;
-        img {
-          width: 100%;
+        margin: 25px;
+        transition: all 0.3s;
+        &:hover {
+          transform: scale(1.03);
+          box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
         }
-        .btn {
-          border: 1.5px solid #19cc9f;
-          padding: 10px 23px;
-          font-size: .9rem;
-          font-weight: 500;
-          color: #19cc9f;
-          transition: all 0.3s ease;
-          &:hover {
-            background-color: #19cc9f;
-            color: #fff;
-            cursor: pointer;
+        .list-img {
+          height: 420px;
+          background-size: cover;
+          background-position-x: 50%;
+        }
+        .list-info {
+          display: flex;
+          padding: 25px;
+          color: #191e20;
+          .product-title {
+            font-family: serif;
+            font-size: 40px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            // color: #191e20;
           }
-          &:disabled {
-          border-color: #acdacd;
-          color: #acdacd;
+          .product-info {
+            font-family: sans-serif;
+          }
+          .product-price {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            font-family: serif;
+            font-size: 18px;
+            font-weight: bold;
+            // color: #191e20;
+          }
+          .btn {
+            width: 100%;
+            border: 1.5px solid #19cc9f;
+            padding: 10px 23px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #19cc9f;
+            transition: all 0.3s ease;
             &:hover {
-              background-color: rgba(0,0,0,0);
-              cursor: default;
+              background-color: #19cc9f;
+              color: #fff;
+              cursor: pointer;
+            }
+            &:disabled {
+            border-color: #acdacd;
+            color: #acdacd;
+              &:hover {
+                background-color: rgba(0,0,0,0);
+                cursor: default;
+              }
             }
           }
         }
