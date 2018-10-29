@@ -76,7 +76,7 @@ div {
       padding: 0;
       text-align: left;
       li {
-        width: 450px;
+        max-width: 450px;
         box-shadow: 0 0 13px rgba(0, 0, 0, 0.5);
         display: flex;
         flex-direction: column;
