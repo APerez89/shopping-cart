@@ -71,7 +71,7 @@ export default {
           commit('setCheckoutStatus', 'Awesome, you have checked out successfully!');
         },
         () => {
-          commit('setCheckoutStatus', 'fail');
+          commit('setCheckoutStatus', 'There was a problem processing your order. Please try again.');
         },
       );
     },

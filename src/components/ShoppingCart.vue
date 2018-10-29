@@ -1,14 +1,22 @@
 <template>
   <div class="cart-container">
-    <h2>header here</h2>
-    <ul class="cart-ul">
-      <li class="cart-li" v-for="product in products" :key="product['.key']">
-        {{ product.title }} - {{ product.price | currency }} - {{ product.quantity }}
-      </li>
-    </ul>
-    <p>Total: {{ total | currency }}</p>
-    <button class="btn-checkout" @click="checkout">Checkout</button>
-    <p class="status-alert" v-if="checkoutStatus">{{ checkoutStatus }}</p>
+    <div class="cart-list">
+      <ul class="cart-ul">
+        <li class="cart-li" v-for="product in products" :key="product['.key']">
+          <div class="list-info">
+            <span class="product-title">{{ product.title }}</span> <br>
+            <span class="product-price">{{ product.price | currency }}
+              <span class="product-quant">{{ product.quantity }} item/s</span>
+            </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="total-checkout">
+      <p class="total">Total: {{ total | currency }}</p>
+      <button class="btn-checkout" @click="checkout">Checkout</button>
+      <p class="status-alert" v-if="checkoutStatus">{{ checkoutStatus }}</p>
+    </div>
   </div>
 </template>
 
@@ -40,55 +48,75 @@ export default {
   position: fixed;
   top: 0;
   right: 0;
-  background-color: #445;
+  background-color: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   transform: translateX(500px);
   transition: 0.3s all;
   &.open {
     transform: translateX(0);
   }
-
-  .cart-ul {
+  .cart-list {
+    width: 100%;
+    height: 500px;
     display: flex;
-    flex-direction: column;
-    padding: 0;
-    text-align: left;
-    .cart-li {
-      width: 100%;
+    justify-content: center;
+    align-items: flex-end;
+    .cart-ul {
       display: flex;
-      font-family: -apple-system, BlinkMacSystemFont,
-        'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-        'Open Sans', 'Helvetica Neue', sans-serif;
-      font-size: 1.3rem;
-      list-style: none;
-      color: #19cc9f;
-      margin: 14px;
+      flex-direction: column;
+      padding: 0;
+      text-align: left;
+      .cart-li {
+        width: 100%;
+        display: flex;
+        list-style: none;
+        font-family: serif;
+        color: #19cc9f;
+        margin: 14px;
+        .list-info {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          .product-title {
+            font-size: 25px;
+            font-weight: bold;
+          }
+          .product-price {
+            display: flex;
+            justify-content: space-between;
+            font-size: 20px;
+          }
+        }
+      }
     }
   }
-  p {
+  .total-checkout {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 3rem;
-    font-weight: 800;
-    color: #19cc9f;
-  }
-  .status-alert {
-    font-size: 2.3rem;
-    text-transform: uppercase;
-    color: #19cc9f;
-  }
-  .btn-checkout {
-    width: 300px;
-    font-size: 1rem;
-    font-weight: 500;
-    padding: 10px 35px;
-    border: none;
-    background-color: #19cc9f;
-    color: #fff;
-    transition: all 0.3s ease;
-    &:hover {
-      background-color: #fff;
-      border: 1.5px solid #19cc9f;
+    .total {
+      font-size: 45px;
+      font-weight: 800;
       color: #19cc9f;
-      cursor: pointer;
+    }
+    .status-alert {
+      padding: 10px;
+      font-size: 25px;
+      color: #19cc9f;
+    }
+    .btn-checkout {
+      width: 300px;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 10px 35px;
+      border: none;
+      background-color: #19cc9f;
+      color: #fff;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: #fff;
+        border: 1.5px solid #19cc9f;
+        color: #19cc9f;
+        cursor: pointer;
+      }
     }
   }
 }
